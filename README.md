@@ -7,6 +7,7 @@ Decompiled MCPE 0.8.1 APK. **Does not contain `res` and `assets` that are necces
 * Extract `assets` and `libminecraftpe.so` from the original apk
 * move `assets` and `res` folders to `app/src/main/`
 * Run `python app/src/main/cpp/tools/get_sound_data.py <path/to/libminecraftpe.so>` and move the resulted `pcm_data.c` file into `app/src/main/cpp/minecraftpe/impl/`
+  * Make sure you extracted armv7 libminecraftpe.so and not x86 or else sound data will be incorrect!
 ## Building
 * You should be able to build this project by using `./gradlew build`
 * Alternatively you can open this project in android studio and build it there.
