@@ -1,0 +1,69 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace 'com.mojang.minecraftpe'
+    compileSdk 34
+    ndkVersion '16.1.4479499'
+    lintOptions {
+        checkReleaseBuilds false
+        //If you want to continue even if errors found use following line
+        abortOnError false
+    }
+    defaultConfig {
+        applicationId "net.skidcode.gh.mcpe081decomp"
+        minSdk 9
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+        externalNativeBuild {
+            cmake {
+                cppFlags ''
+            }
+        }
+    }
+
+    packaging{
+        resources{
+            excludes += "META-INF/DEPENDENCIES"
+            excludes += "META-INF/com/android/build/**"
+            excludes += "META-INF/version-control-info.textproto"
+            excludes += "org/apache/**"
+            excludes += "mozilla/*"
+        }
+    }
+
+    splits {
+        abi {
+            enable true
+            reset()
+            include "armeabi", "arm64-v8a", "armeabi-v7a", "x86_64", "x86"
+            universalApk false
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    externalNativeBuild {
+        cmake {
+            path file('src/main/cpp/CMakeLists.txt')
+            version '3.22.1'
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.apache.httpcomponents:httpclient:4.5.14'
+}
