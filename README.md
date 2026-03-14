@@ -2,7 +2,8 @@
 Decompiled MCPE 0.8.1 APK. **Does not contain `res` and `assets` that are neccessary to build it**(get them from the original apk yourself).
 
 ## Preparing to build
-* Clone the repo with `--recursive` flag(or use `git submodule init` and `git submodule update` after cloning if you forgot to add it)
+* Clone this repo
+* Recursively clone MCPE-0.8.1 repo into `app/src/main/cpp` (`git clone https://github.com/oldminecraftcommunity/MCPE-0.8.1 app/src/main/cpp --recursive`)
 * Use jadx(or similar tool) to get `res` folder from apk file(while the apk already contains `res` folder, some of its content is packed into `resources.arsc`)
 * Extract `assets` and `libminecraftpe.so` from the original apk
 * move `assets` and `res` folders to `app/src/main/`
